@@ -11,7 +11,8 @@ class ApplicationController < ActionController::API
   end
 
   def token
+    # header of following format is expected: "Bearer: TOKEN"
     bearer = request.headers['HTTP_AUTHORIZATION']
-    bearer.present? ? bearer.split.last : nil # "Bearer: TOKEN"
+    bearer.split.last if bearer.present?
   end
 end
